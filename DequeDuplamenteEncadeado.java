@@ -51,13 +51,15 @@ public class DequeDuplamenteEncadeado<T> {
 	public T remove() throws Exception {
 		if (this.isEmpty()) {
 			T o = cabeca.getValor();
-			cabeca = cabeca.getProximo();
-			if (cabeca == null) {
+
+			if (cabeca == cabeca.getProximo()) {
 				cauda = null;
 			} else {
 				cabeca.setAnterior(null);
 			}
 			System.out.println("Removendo " + o);
+			cauda.setProximo(cabeca);
+			cabeca.setAnterior(cauda);
 			return o;
 		}
 		return null;
@@ -73,6 +75,8 @@ public class DequeDuplamenteEncadeado<T> {
 			} else {
 				cauda.setProximo(null);
 				System.out.println("Removendo " + o);
+				cauda.setProximo(cabeca);
+				cabeca.setAnterior(cauda);
 				return o;
 			}
 		}
@@ -97,11 +101,6 @@ public class DequeDuplamenteEncadeado<T> {
 
 	// lista os objetos do deque
 	public void list(Function<T, T> lambda) {
-
-		lambda = (x) -> {
-			System.out.println(x);
-			return x;
-		};
 
 		Elemento<T> e = cabeca;
 		while (e != null) {
