@@ -1,6 +1,5 @@
 package Deque;
 
-import java.util.List;
 import java.util.function.Function;
 
 public class DequeDuplamenteEncadeado<T> {
@@ -13,74 +12,74 @@ public class DequeDuplamenteEncadeado<T> {
 	}
 
 	// Adiciona como o ultimo
-	public void add ( T valor ) throws Exception {
-		System.out.println( "Adicionando " + valor );
-		Elemento<T> e = new Elemento<T>( valor );
-		if ( cauda != null ) {
-			cauda.setProximo( e );
-			e.setAnterior( cauda );
+	public void add(T valor) throws Exception {
+		System.out.println("Adicionando " + valor);
+		Elemento<T> e = new Elemento<T>(valor);
+		if (cauda != null) {
+			cauda.setProximo(e);
+			e.setAnterior(cauda);
 			cauda = e;
 		}
-		if ( cabeca == null ) {
+		if (cabeca == null) {
 			cabeca = cauda;
 		}
-		// O Elemento<T> anterior a cabeÁa aponta para a cauda
+		// O Elemento<T> anterior a cabe√ßa aponta para a cauda
 		// O Elemento<T> posterior a cauda aponta para a cabeca
-		cauda.setProximo( cabeca );
-		cabeca.setAnterior( cauda );
+		cauda.setProximo(cabeca);
+		cabeca.setAnterior(cauda);
 	}
 
 	// Adiciona como primeiro
-	public void addFirst( T valor ) throws Exception {
-		System.out.println( "Adicionando " + valor );
-		Elemento<T> e = new Elemento<T>( valor );
-		if ( cabeca != null ) {
-			cabeca.setAnterior( e );
-			e.setProximo( cabeca );
+	public void addFirst(T valor) throws Exception {
+		System.out.println("Adicionando " + valor);
+		Elemento<T> e = new Elemento<T>(valor);
+		if (cabeca != null) {
+			cabeca.setAnterior(e);
+			e.setProximo(cabeca);
 			cabeca = e;
 		}
-		if ( cauda == null ) {
+		if (cauda == null) {
 			cauda = cabeca;
 		}
-		// O Elemento<T> anterior a cabeÁa aponta para a cauda
+		// O Elemento<T> anterior a cabe√ßa aponta para a cauda
 		// O Elemento<T> posterior a cauda aponta para a cabeca
-		cauda.setProximo( cabeca );
-		cabeca.setAnterior( cauda );
+		cauda.setProximo(cabeca);
+		cabeca.setAnterior(cauda);
 	}
 
-	// Remove o primeiro  (ver no trabson de Gina)
+	// Remove o primeiro (ver no trabson de Gina)
 	public T remove() throws Exception {
-		if ( this.isEmpty() ) {
+		if (this.isEmpty()) {
 			T o = cabeca.getValor();
-			cabeca = cabeca.getProximo();		
-			if ( cabeca == null ) {
+			cabeca = cabeca.getProximo();
+			if (cabeca == null) {
 				cauda = null;
-			} else { 
+			} else {
 				cabeca.setAnterior(null);
 			}
-			System.out.println( "Removendo " + o );
+			System.out.println("Removendo " + o);
 			return o;
-			}
+		}
 		return null;
 	}
 
 	// Remove o ultimo (ver no trabson de Gina)
 	public T removeLast() throws Exception {
-		if ( this.isEmpty() ){
+		if (this.isEmpty()) {
 			T o = cauda.getValor();
 			cauda = cauda.getAnterior();
-			if ( cauda == null ) {
+			if (cauda == null) {
 				cabeca = null;
 			} else {
-			cauda.setProximo(null);
-			System.out.println( "Removendo " + o );
-			return o;
+				cauda.setProximo(null);
+				System.out.println("Removendo " + o);
+				return o;
 			}
 		}
 		return null;
 	}
 
-	// se est· vazio
+	// se est√° vazio
 	public boolean isEmpty() {
 		return cabeca == null && cauda == null;
 	}
@@ -97,11 +96,11 @@ public class DequeDuplamenteEncadeado<T> {
 	}
 
 	// lista os objetos do deque
-	public void list(Function<T, T> lambda ) {
-		
-		lambda = (x) -> 
-		{
-			System.out.println(x); 
+	public void list(Function<T, T> lambda) {
+
+		lambda = (x) -> {
+			System.out.println(x);
+			return x;
 		};
 
 		Elemento<T> e = cabeca;
@@ -114,3 +113,4 @@ public class DequeDuplamenteEncadeado<T> {
 		}
 	}
 }
+
