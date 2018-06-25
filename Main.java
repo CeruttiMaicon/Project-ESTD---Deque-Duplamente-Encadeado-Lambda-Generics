@@ -5,17 +5,20 @@ public class Main {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		try {
-			DequeDuplamenteEncadeado<Integer> n = new DequeDuplamenteEncadeado<Integer>();
+			DequeDuplamenteEncadeado<String> n = new DequeDuplamenteEncadeado<String>();
 			
-			n.add(8);
-			n.add(88);
-			n.add(888);
-			n.add(8999);
+			n.addFirst("8");
+			n.addFirst("88");
 			
-			n.list();
+			
+			
+			
+			//Este não funciona pois a classe Generics impede que você
+			//Coloque um tipo diferente do especificado entre os "diamantes"(<>)
+			//n.list();
 		}
 		catch (Exception ex) {
-			
+			System.out.println(ex);
 		}
 	}
 
